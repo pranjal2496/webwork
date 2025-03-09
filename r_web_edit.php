@@ -5,7 +5,7 @@ $id = $_GET['r_web_editid'];
 
 $sql = "SELECT * FROM `registration_1` WHERE id= $id";
 
-$result = mysqli_query($con,$sql);
+$result = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($result);
 
 $name = $row['name'];
@@ -16,10 +16,10 @@ $image = $row['image'];
 
 
 ?>
- 
 
 
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -48,12 +48,13 @@ $image = $row['image'];
         }
 
         .card {
-            background:#77A69D!important;}
+            background: #77A69D !important;
+        }
 
         body {
-            background: rgb(240,255,252);
-    background: radial-gradient(circle, rgba(240,255,252,1) 100%, rgba(119,166,157,1) 100%);
-}
+            background: rgb(240, 255, 252);
+            background: radial-gradient(circle, rgba(240, 255, 252, 1) 100%, rgba(119, 166, 157, 1) 100%);
+        }
 
         .queen {
             background: white;
@@ -62,7 +63,7 @@ $image = $row['image'];
         .form-control {
             width: 100%;
         }
- 
+
         .queen.container {
             margin-top: 5%;
             width: 70%;
@@ -74,7 +75,7 @@ $image = $row['image'];
             text-align: center;
             margin: auto;
             height: 6vh;
-            background: #406665!important;
+            background: #406665 !important;
             border-radius: 2rem;
 
         }
@@ -86,7 +87,7 @@ $image = $row['image'];
 
 </head>
 
- 
+
 <body>
 
     <div style="height: 93vh;">
@@ -125,8 +126,8 @@ $image = $row['image'];
                     <div class="grid gap-3">
 
                         <div class="row " style="margin-top: 4px;">
-                     
-                      
+
+
                             <div class="col-md-4">
                                 <label for="name"><b>Name</b></label>
                                 <input type="text" class="form-control" style="border-color: grey;" style="width: 100%;" id="name" name="name"
@@ -145,30 +146,30 @@ $image = $row['image'];
                                 <input type="text" id="username" class="form-control" style="border-color: grey;" style="width: 100%;" name="username"
                                     value="<?php echo $username; ?>">
                             </div>
-                            </div>
-                            <div class="row " style="margin-top: 30px;">
+                        </div>
+                        <div class="row " style="margin-top: 30px;">
                             <div class="col-md-4">
                                 <label for="password"><b>Password</b></label>
                                 <input type="text" id="password" class="form-control" style="border-color: grey;" style="width: 100%;" name="password"
                                     value="<?php echo $password; ?>">
                             </div>
 
-                            <div class="col-md-4 mb-3" >
-                             <label for="image"><b>Update Image</b></label>
-                             <input type="file" class="form-control" name="image" style="border-color: grey;" style="width: 100%;" id="image" accept="image/*" />
-                         </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="image"><b>Update Image</b></label>
+                                <input type="file" class="form-control" name="image" style="border-color: grey;" style="width: 100%;" id="image" accept="image/*" />
+                            </div>
 
                         </div>
-                        </div>
+                    </div>
 
-<div class="row button-wrapper" style="margin-top: 30px ">
-    <button type="submit" name="done" class="btn " id="submit"><b>Submit</b></button>
-</div>
+                    <div class="row button-wrapper" style="margin-top: 30px ">
+                        <button type="submit" name="done" class="btn " id="submit"><b>Submit</b></button>
+                    </div>
 
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
+    </div>
 
 
     </div>
