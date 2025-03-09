@@ -1,0 +1,66 @@
+.card-header {
+    background: rgb(6,63,123);
+    background: radial-gradient(circle, rgba(6,63,123,1) 100%, rgba(6,63,123,1) 100%);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.card{ 
+    background: rgb(0,147,215);
+    background: radial-gradient(circle, rgba(0,147,215,1) 100%, rgba(0,147,215,1) 100%);
+}
+
+.table{
+    margin-bottom: 0px!important;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td{
+    background: rgb(231 243 255);
+} 
+
+body{
+    background: rgb(222,237,252);
+background: radial-gradient(circle, rgba(222,237,252,1) 100%, rgba(193,219,246,1) 100%);
+}
+
+.ph-card-header {
+    color: white !important; 
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-color-type:unset!important;
+    --bs-table-bg-type:unset!important;
+}
+
+#sidebar {
+       
+    width: 220px; 
+    height: 82vh; 
+    background-color:rgb(0,147,215);
+    color: white;
+    transition: transform 0.3s ease;
+   
+}
+
+.nav-link.active {
+    background-color:white !important;
+    color: rgb(0,147,215) !important;
+    font-weight: bold;
+    border-radius: 100px;
+}
+
+.tbody, td, tfoot, th, thead, tr {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    align-items: center;
+    vertical-align: middle;
+}
+ 
+.tableimg{
+    border-radius: 6px;
+}
+ 

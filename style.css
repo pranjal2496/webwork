@@ -1,0 +1,47 @@
+for{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+form button{
+    background: rgb(6,63,123);
+    background: radial-gradient(circle, rgba(6,63,123,1) 100%, rgba(6,63,123,1) 100%);
+}
+
+form input{
+    background: rgb(222,237,252);
+    background: radial-gradient(circle, rgba(222,237,252,1) 100%, rgba(193,219,246,1) 100%);
+}
+
+form span{
+    background: rgb(6,63,123);
+    background: radial-gradient(circle, rgba(6,63,123,1) 100%, rgba(6,63,123,1) 100%);
+}
+
+form a{
+color: rgb(6,63,123);
+   
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 25%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.b{
+    font-size: 4rem;
+    color: #fff; 
+}
+
+.container-fluid{
+    background: rgb(222,237,252);
+    background: radial-gradient(circle, rgba(222,237,252,1) 100%, rgba(87,64,234,1) 100%);
+}
+
