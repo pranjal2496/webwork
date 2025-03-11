@@ -9,7 +9,6 @@ if (!isset($_SESSION["username"])) {
 
 
  
-
 <!DOCTYPE htlm>
 <html lang="en">
 
@@ -33,7 +32,7 @@ if (!isset($_SESSION["username"])) {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <style>
-        header { 
+        header {
             position: sticky;
             top: 0;
             z-index: 99;
@@ -120,7 +119,7 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col">Sr. No.</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Link</th>
@@ -140,8 +139,9 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
+
                                         while ($row = mysqli_fetch_assoc($result)) {
 
                                             $id = $row['id'];
@@ -152,10 +152,11 @@ if (!isset($_SESSION["username"])) {
                                             $password = $row['password'];
                                             $image = $row['image'];
 
+                                            $index++;
 
                                             echo '<tr>
 
-                   <td><b>' . $id . '</b></td>
+                   <td><b>' .$index. '</b></td>
                     <td>' . $name . '</td>
                     <td>' . $description . '</td>
                     <td>' . $link . '</td>
@@ -179,6 +180,7 @@ if (!isset($_SESSION["username"])) {
 
                     </td>
                 </tr>';
+
                                             echo '<div id="myModal' . $id . '" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -250,7 +252,7 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col">Sr. No.</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">URL</th>
                                         <th scope="col">Username</th>
@@ -269,11 +271,11 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration_1`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
-                                            $id = $row['id'];
+                                            $id =  $row['id'];
                                             $name = $row['name'];
                                             $url = $row['url'];
                                             $username = $row['username'];
@@ -281,9 +283,10 @@ if (!isset($_SESSION["username"])) {
                                             $image = $row['image'];
 
 
-                                            echo '<tr>
+                                            $index++;
 
-                    <td><b>' . $id . '</b></td>
+                                            echo '<tr>
+                    <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
                     <td>' . $url . '</td>
                     <td>' . $username . '</td>
@@ -375,9 +378,10 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Server Name</th>
-                                        <th scope="col">Admin Panel</th>
+                                        <th scope="col">Sr. No.</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Link</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Password</th>
                                         <th scope="col">Image</th>
@@ -394,22 +398,26 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration_2`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
                                             $id = $row['id'];
                                             $name = $row['name'];
+                                            $description = $row['description'];
                                             $panel = $row['panel'];
                                             $username = $row['username'];
                                             $password = $row['password'];
                                             $image = $row['image'];
 
+                                            $index++;
+
 
                                             echo '<tr>
 
-                  <td><b>' . $id . '</b></td>
+                  <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
+                    <td>' . $description . '</td>
                     <td>' . $panel . '</td>
                     <td>' . $username . '</td>
                     <td>' . $password . '</td>
@@ -445,8 +453,13 @@ if (!isset($_SESSION["username"])) {
                                 <input type="text" class="form-control" name="name" id="name" value="' . $name . '" readonly />
                             </div>
         
+                              <div class="form-group mb-3">
+                                <label for=""><b>Description</b></label>
+                                <input type="text" class="form-control" name="description" id="description" value="' . $description . '" readonly />
+                            </div>
+
                             <div class="form-group mb-3">
-                                <label for=""><b>Admin Panel</b></label>
+                                <label for=""><b>Link</b></label>
                                 <input type="text" class="form-control" name="panel" id="panel" value="' . $panel . '" readonly />
                             </div>
         
@@ -500,8 +513,8 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Server Name</th>
+                                        <th scope="col">Sr. No.</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">IP Address</th>
                                         <th scope="col">Purpose</th>
                                         <th scope="col">Image</th>
@@ -518,7 +531,7 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration_3`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -528,10 +541,12 @@ if (!isset($_SESSION["username"])) {
                                             $purpose = $row['purpose'];
                                             $image = $row['image'];
 
+                                            $index++;
+
 
                                             echo '<tr>
 
-                  <td><b>' . $id . '</b></td>
+                  <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
                     <td>' . $address . '</td>
                     <td>' . $purpose . '</td>
@@ -568,7 +583,7 @@ if (!isset($_SESSION["username"])) {
                             </div>
         
                             <div class="form-group mb-3">
-                                <label for=""><b>Address</b></label>
+                                <label for=""><b>IP Address</b></label>
                                 <input type="text" class="form-control" name="address" id="address" value="' . $address . '" readonly />
                             </div>
         
@@ -577,7 +592,7 @@ if (!isset($_SESSION["username"])) {
                                 <input type="text" class="form-control" name="purpose" id="purpose" value="' . $purpose . '" readonly />
                             </div>
 
-                            
+                             
                              <div class="form-group mb-3">
                                 <label for=""><b>Image</b></label>
                                 <div>

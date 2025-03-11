@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                
             } else {
                 echo "Error uploading the file.";
-                exit;
+                exit; 
             }
         } else {
             echo "Invalid file type.";
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-content">
                 <!-- form section -->
                 <h4 style="border-bottom: 0.2px solid #c9d9ea; color: #0e0e0e;  padding-bottom: 16px; margin-bottom: 30px;">Add Websites</h4>
-                <form id="dataForm" action="c_web_form.php" method="POST" enctype="multipart/form-data">
+                <form id="dataForm" action="c_web_form.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <div class="grid gap-3">
 
                         <div class="row " style="margin-top: 4px;">
@@ -169,20 +169,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-md-4">
                                 <label for="name"><b>Name</b></label>
                                 <input type="text" style="border-color: grey; width: 100%;" class="form-control" id="name" name="name"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="url"><b>url</b></label>
+                                <label for="url"><b>Url</b></label>
                                 <input type="text" id="url" class="form-control" style="border-color: grey; width: 100%;" name="url"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error1" style="color: red;"></span>
                             </div>
 
 
                             <div class="col-md-4">
                                 <label for="username"><b>Username</b></label>
                                 <input type="text" id="username" class="form-control" style="border-color: grey; width: 100%;" name="username"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error2" style="color: red;"></span>
                             </div>
                         </div>
 
@@ -191,12 +191,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-md-4">
                                 <label for="password"><b>Password</b></label>
                                 <input type="text" id="password" class="form-control" style="border-color: grey; width: 100%;" name="password"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error3" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="image"><b>Upload Image</b></label>
-                                <input type="file" class="form-control" name="image" id="image" style="border-color: grey; width: 100%;" accept="image/*" />
+                                <input type="file" class="form-control" name="image" id="image" style="border-color: grey; width: 100%;" accept="image/*"  oninput="remove()"><span id="error4" style="color: red;"></span>
                             </div>
 
                         </div>
@@ -209,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-                </form>
+                </form> 
             </div>
         </div>
     </div>
@@ -220,6 +220,67 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </footer>
 
 </body>
-<script src="script.js"></script>
+<script>
+
+    function validateForm() {
+
+        let valid = true;
+        let name = document.forms["dataForm"]["name"].value;
+        let url = document.forms["dataForm"]["url"].value;
+        let username = document.forms["dataForm"]["username"].value;
+        let password = document.forms["dataForm"]["password"].value;
+        let img = document.forms["dataForm"]["image"].value;
+
+        if (name == "") {
+            // alert("Name must be filled out");
+            document.getElementById('error').textContent = 'Name must be filled out';
+            valid = false;
+            return false;
+        }
+
+        if (url == "") {
+            // alert("Url must be filled out");
+            document.getElementById('error1').innerHTML = 'Url must be filled out';
+            return false;
+        }
+
+        if (username == "") {
+            // alert("Username must be filled out");
+            document.getElementById('error2').innerHTML = 'Username must be filled out';
+            return false;
+
+        }
+
+        if (password == "") {
+            // alert("Password must be filled out");
+            document.getElementById('error3').innerHTML = 'Password must be filled out';
+            return false;
+
+        }
+
+        if (img == "") {
+            // alert("Image must be upload");
+            document.getElementById('error4').innerHTML = 'Image must be upload';
+            return false;
+
+        }
+    }
+
+        function remove() {
+
+            document.getElementById('error').innerHTML = '';
+
+            document.getElementById('error1').innerHTML = '';
+
+            document.getElementById('error2').innerHTML = '';
+
+            document.getElementById('error3').innerHTML = '';
+
+            document.getElementById('error4').innerHTML = '';
+
+        
+    }
+
+</script>
 
 </html>

@@ -16,7 +16,7 @@ $image = $row['image'];
 ?>
 
  
-
+ 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +134,7 @@ $image = $row['image'];
                             </div>
 
                             <div class="col-md-4">
-                                <label for="address"><b>Address</b></label>
+                                <label for="address"><b>IP Address</b></label>
                                 <input type="text" id="address" class="form-control" style="border-color: grey;" style="width: 100%;" name="address"
                                     value="<?php echo $address; ?>">
                             </div>

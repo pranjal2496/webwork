@@ -6,6 +6,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $name = $_POST['name'];
 
+    $description = $_POST['description'];
+
     $panel = $_POST['panel'];
 
     $username = $_POST['username'];
@@ -36,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    $sql = "INSERT INTO registration_2 (`name`,  `panel`, `username`, `password`, `image`) 
-            VALUES ('$name', '$panel', '$username', '$password', '$uploadFile')";
+    $sql = "INSERT INTO registration_2 (`name`,  `description`,  `panel`, `username`, `password`, `image`) 
+            VALUES ('$name', '$description', '$panel', '$username', '$password', '$uploadFile')";
 
     if (mysqli_query($con, $sql)) {
         echo "Record added successfully!";
@@ -158,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-content">
                 <!-- form section -->
                 <h4 style="border-bottom: 0.2px solid #c9d9ea; color: #0e0e0e;  padding-bottom: 16px; margin-bottom: 30px;">Add Admin Detail</h4>
-                <form id="dataForm" action="c_admin_form.php" method="POST" enctype="multipart/form-data">
+                <form id="dataForm" action="c_admin_form.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <div class="grid gap-3">
 
                         <div class="row " style="margin-top: 4px;">
@@ -166,33 +168,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-md-4">
                                 <label for="name"><b>Name</b></label>
                                 <input type="text" class="form-control" style="border-color: grey; width: 100%;" id="name" name="name"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="panel"><b>Admin Panel</b></label>
+                                <label for="description"><b>Description</b></label>
+                                <input type="text" id="description" class="form-control" style="border-color: grey; width: 100%;" name="description"
+                                    value="" oninput="remove()"><span id="error1" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="panel"><b>Link</b></label>
                                 <input type="text" id="panel" class="form-control" style="border-color: grey; width: 100%;" name="panel"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error2" style="color: red;"></span>
                             </div>
 
 
-                            <div class="col-md-4">
-                                <label for="username"><b>Username</b></label>
-                                <input type="text" id="username" class="form-control" style="border-color: grey; width: 100%;" name="username"
-                                    value="">
-                            </div>
                         </div>
 
                         <div class="row" style="margin-top: 30px;">
-                            <div class="col-md-4">
+
+                        <div class="col-md-4">
+                                <label for="username"><b>Username</b></label>
+                                <input type="text" id="username" class="form-control" style="border-color: grey; width: 100%;" name="username"
+                                    value="" oninput="remove()"><span id="error3" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4"> 
                                 <label for="password"><b>Password</b></label>
                                 <input type="text" id="password" class="form-control" style="border-color: grey; width: 100%;" name="password"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error4" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="image"><b>Upload Image</b></label>
-                                <input type="file" class="form-control" name="image" style="border-color: grey; width: 100%;" id="image" accept="image/*" />
+                                <input type="file" class="form-control" name="image" style="border-color: grey; width: 100%;" id="image" accept="image/*" oninput="remove()"><span id="error5" style="color: red;"></span>
                             </div>
 
                         </div>
@@ -215,6 +225,75 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </footer>
 
 </body>
-<script src="script.js"></script>
+<script>
+
+    function validateForm() {
+
+        let valid = true;
+        let name = document.forms["dataForm"]["name"].value;
+        let description = document.forms["dataForm"]["description"].value;
+        let panel = document.forms["dataForm"]["panel"].value;
+        let user = document.forms["dataForm"]["username"].value;
+        let pass = document.forms["dataForm"]["password"].value;
+        let img = document.forms["dataForm"]["image"].value;
+
+        if (name == "") {
+            // alert("Name must be filled out");
+            document.getElementById('error').textContent = 'Name must be filled out';
+            valid = false;
+            return false;
+        }
+
+        if (description == "") {
+            // alert("Description must be filled out");
+            document.getElementById('error1').innerHTML = 'Description must be filled out';
+            return false;
+        }
+
+        if (panel == "") {
+            // alert("Link must be filled out");
+            document.getElementById('error2').innerHTML = 'Link must be filled out';
+            return false;
+        }
+
+        if (user == "") {
+            // alert("Username must be filled out");
+            document.getElementById('error3').innerHTML = 'Username must be filled out';
+            return false;
+
+        }
+        if (pass == "") {
+            // alert("Password must be filled out");
+            document.getElementById('error4').innerHTML = 'Password must be filled out';
+            return false;
+
+        }
+
+        if (img == "") {
+            // alert("Image must be upload");
+            document.getElementById('error5').innerHTML = 'Image must be upload';
+            return false;
+
+        }
+    }
+
+        function remove() {
+
+            document.getElementById('error').innerHTML = '';
+
+            document.getElementById('error1').innerHTML = '';
+
+            document.getElementById('error2').innerHTML = '';
+
+            document.getElementById('error3').innerHTML = '';
+
+            document.getElementById('error4').innerHTML = '';
+
+            document.getElementById('error5').innerHTML = '';
+
+        
+    }
+
+</script>
 
 </html>

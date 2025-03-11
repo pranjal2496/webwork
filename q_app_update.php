@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "File is not an image.";
             exit;
         }
-  
+   
          
         if ($_FILES['image']['size'] > 5000000) { 
             echo "Sorry, your file is too large.";

@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 echo "Error uploading the file.";
                 exit;
-            }
+            } 
         } else {
             echo "Invalid file type.";
             exit;
@@ -156,21 +156,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-content">
                 <!-- form section -->
                 <h4 style="border-bottom: 0.2px solid #c9d9ea; color: #0e0e0e;  padding-bottom: 16px; margin-bottom: 30px;">Add Server Information</h4>
-                <form id="dataForm" action="c_server_form.php" method="POST" enctype="multipart/form-data">
+                <form id="dataForm" action="c_server_form.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <div class="grid gap-3">
 
                         <div class="row " style="margin-top: 4px;">
 
                             <div class="col-md-4">
-                                <label for="name"><b>Server Name</b></label>
+                                <label for="name"><b>Name</b></label>
                                 <input type="text" class="form-control" style="border-color: grey; width: 100%;" id="name" name="name"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="address"><b>Address</b></label>
+                                <label for="address"><b>IP Address</b></label>
                                 <input type="text" id="address" style="border-color: grey; width: 100%;" class="form-control" class="form-control" name="address"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error1" style="color: red;"></span>
                             </div>
                         </div>
 
@@ -179,13 +179,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-md-4">
                                 <label for="purpose"><b>Purpose</b></label>
                                 <input type="text" id="purpose" style="border-color: grey; width: 100%;" class="form-control" name="purpose"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error2" style="color: red;"></span>
                             </div>
 
 
                             <div class="col-md-4">
                                 <label for="image"><b>Upload Image</b></label>
-                                <input type="file" class="form-control" style="border-color: grey; width: 100%;" name="image" id="image" accept="image/*" />
+                                <input type="file" class="form-control" style="border-color: grey; width: 100%;" name="image" id="image" accept="image/*"  oninput="remove()"><span id="error3" style="color: red;"></span>
                             </div>
 
                         </div>
@@ -210,6 +210,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </footer>
 
 </body>
-<script src="script.js"></script>
+<script>
+
+    function validateForm() {
+
+        let valid = true;
+        let name = document.forms["dataForm"]["name"].value;
+        let address = document.forms["dataForm"]["address"].value;
+        let purpose = document.forms["dataForm"]["purpose"].value;
+        let img = document.forms["dataForm"]["image"].value;
+
+        if (name == "") {
+            // alert("Name must be filled out");
+            document.getElementById('error').textContent = 'Name must be filled out';
+            valid = false;
+            return false;
+        }
+
+        if (address == "") {
+            // alert("Address must be filled out");
+            document.getElementById('error1').innerHTML = 'Address must be filled out';
+            return false;
+        }
+
+        if (purpose == "") {
+            // alert("Purpose must be filled out");
+            document.getElementById('error2').innerHTML = 'Purpose must be filled out';
+            return false;
+
+        }
+
+        if (img == "") {
+            // alert("Image must be upload");
+            document.getElementById('error3').innerHTML = 'Image must be upload';
+            return false;
+
+        }
+    }
+
+        function remove() {
+
+            document.getElementById('error').innerHTML = '';
+
+            document.getElementById('error1').innerHTML = '';
+
+            document.getElementById('error2').innerHTML = '';
+
+            document.getElementById('error3').innerHTML = '';
+
+        
+    }
+
+</script>
 
 </html>

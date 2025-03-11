@@ -9,11 +9,12 @@ $result = mysqli_query($con,$sql);
 $row = mysqli_fetch_assoc($result);
 
 $name = $row['name'];
+$description = $row['description'];
 $panel = $row['panel'];
 $username = $row['username'];
 $password = $row['password'];
 $image = $row['image'];
- 
+  
 
 ?>
 
@@ -133,19 +134,27 @@ $image = $row['image'];
                             </div>
 
                             <div class="col-md-4">
-                                <label for="panel"><b>Admin Panel</b></label>
+                                <label for="description"><b>Description</b></label>
+                                <input type="text" id="description" class="form-control" style="border-color: grey;" style="width: 100%;" name="description"
+                                    value="<?php echo $description; ?>">
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <label for="panel"><b>Link</b></label>
                                 <input type="text" id="panel" class="form-control" style="border-color: grey;" style="width: 100%;" name="panel"
                                     value="<?php echo $panel; ?>">
                             </div>
 
+ 
+                        </div>
+                        <div class="row " style="margin-top: 30px;">
 
-                            <div class="col-md-4">
+                        <div class="col-md-4">
                                 <label for="username"><b>Username</b></label>
                                 <input type="text" id="username" class="form-control" style="border-color: grey;" style="width: 100%;" name="username"
                                     value="<?php echo $username; ?>">
                             </div>
-                        </div>
-                        <div class="row " style="margin-top: 30px;">
+
                             <div class="col-md-4">
                                 <label for="password"><b>Password</b></label>
                                 <input type="text" id="password" class="form-control" style="border-color: grey;" style="width: 100%;" name="password"

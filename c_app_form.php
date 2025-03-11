@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
             } else {
                 echo "Error uploading the file.";
-                exit;
+                exit; 
             }
         } else {
             echo "Invalid file type.";
@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="form-content">
                 <!-- form section -->
                 <h4 style="border-bottom: 0.2px solid #c9d9ea; color: #0e0e0e;  padding-bottom: 16px; margin-bottom: 30px;">Add App</h4>
-                <form id="dataForm" action="c_app_form.php" method="POST" enctype="multipart/form-data">
+                <form id="dataForm" action="c_app_form.php" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
                     <div class="grid gap-3">
 
                         <div class="row " style="margin-top: 4px;">
@@ -161,19 +161,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-md-4">
                                 <label for="name"><b>Name</b></label>
                                 <input type="text" style="border-color: grey;" class="form-control" style="width: 100%;" id="name" name="name"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="description"><b>Description</b></label>
                                 <input type="text" style="border-color: grey;" id="description" class="form-control" style="width: 100%;" name="description"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error1" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="link"><b>link</b></label>
                                 <input type="text" style="border-color: grey;" id="link" class="form-control" style="width: 100%;" name="link"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error2" style="color: red;"></span>
                             </div>
                         </div>
 
@@ -181,18 +181,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <div class="col-md-4">
                                 <label for="username"><b>Username</b></label>
                                 <input type="text" style="border-color: grey;" id="username" class="form-control" style="width: 100%;" name="username"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error3" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
                                 <label for="password"><b>Password</b></label>
                                 <input type="text" style="border-color: grey;" id="password" class="form-control" style="width: 100%;" name="password"
-                                    value="">
+                                    value="" oninput="remove()"><span id="error4" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4 mb-3">
                                 <label for="image"><b>Upload Image</b></label>
-                                <input type="file" style="border-color: grey;" class="form-control" name="image" style="width: 100%;" id="image" accept="image/*" />
+                                <input type="file" style="border-color: grey;" class="form-control" name="image" style="width: 100%;" id="image" accept="image/*"  oninput="remove()"><span id="error5" style="color: red;"></span>
                             </div>
 
                         </div>
@@ -216,6 +216,77 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </footer>
 
 </body>
-<script src="script.js"></script>
+<script>
+
+    function validateForm() {
+
+        let valid = true;
+        let name = document.forms["dataForm"]["name"].value;
+        let des = document.forms["dataForm"]["description"].value;
+        let link = document.forms["dataForm"]["link"].value;
+        let user = document.forms["dataForm"]["username"].value;
+        let pass = document.forms["dataForm"]["password"].value;
+        let img = document.forms["dataForm"]["image"].value;
+
+        if (name == "") {
+            // alert("Name must be filled out");
+            document.getElementById('error').textContent = 'Name must be filled out';
+            valid = false;
+            return false;
+        }
+
+        if (des == "") {
+            // alert("Description must be filled out");
+            document.getElementById('error1').innerHTML = 'Description must be filled out';
+            return false;
+        }
+
+        if (link == "") {
+            // alert("Link must be filled out");
+            document.getElementById('error2').innerHTML = 'Link must be filled out';
+            return false;
+
+        }
+
+        if (user == "") {
+            // alert("Username must be filled out");
+            document.getElementById('error3').innerHTML = 'Username must be filled out';
+            return false;
+
+        }
+        if (pass == "") {
+            // alert("Password must be filled out");
+            document.getElementById('error4').innerHTML = 'Password must be filled out';
+            return false;
+
+        }
+
+
+        if (img == "") {
+            // alert("Image must be upload");
+            document.getElementById('error5').innerHTML = 'Image must be upload';
+            return false;
+
+        }
+    }
+
+        function remove() {
+
+            document.getElementById('error').innerHTML = '';
+
+            document.getElementById('error1').innerHTML = '';
+
+            document.getElementById('error2').innerHTML = '';
+
+            document.getElementById('error3').innerHTML = '';
+
+            document.getElementById('error4').innerHTML = '';
+
+            document.getElementById('error5').innerHTML = '';
+
+        
+    }
+
+</script>
 
 </html>

@@ -19,7 +19,7 @@ $image = $row['image'];
 
 
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 
 <head>

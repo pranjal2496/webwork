@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
     $id = $_POST['id'];
     $name = $_POST['name'];
+    $description = $_POST['description'];
     $panel = $_POST['panel'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -50,10 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = mysqli_query($con, $sql);
         $row = mysqli_fetch_assoc($result);
         $image = $row['image']; 
-    }
+    } 
 
     $updateSql = "UPDATE `registration_2` SET 
                     name = '$name', 
+                     description = '$description', 
                     panel = '$panel', 
                     username = '$username', 
                     password = '$password', 

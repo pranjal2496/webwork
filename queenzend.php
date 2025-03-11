@@ -31,7 +31,7 @@ if (!isset($_SESSION["username"])) {
     <style>
         header {
             position: sticky;
-            top: 0;
+            top: 0; 
             z-index: 99;
         }
 
@@ -117,7 +117,7 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col">Sr. No.</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Link</th>
@@ -137,7 +137,7 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -149,9 +149,11 @@ if (!isset($_SESSION["username"])) {
                                             $password = $row['password'];
                                             $image = $row['image'];
 
+                                            $index++;
+
                                             echo '<tr>  
 
-                    <td><b>' . $id . '</b></td>
+                    <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
                     <td>' . $description . '</td>
                     <td>' . $link . '</td>
@@ -164,7 +166,7 @@ if (!isset($_SESSION["username"])) {
                             <a class="button-a p-2 g-col-6" href="q_app_edit.php?q_app_editid=' . $id . '"><i class="bi bi-pencil-fill"></i></a>
                         </button>
 
-                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button" class="confirm_del_btn" data-id="' . $id . '" style="border: none; background: unset !important;">
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button" class="confirm_del_btn" data-id="' .  $id. '" style="border: none; background: unset !important;">
                             <a class="button-a p-2 g-col-6" href="#"><i class="bi bi-trash-fill"></i></a>
                         </button>
 
@@ -175,7 +177,7 @@ if (!isset($_SESSION["username"])) {
 
                     </td>
                 </tr>';
-                                            echo '<div id="myModal' . $id . '" class="modal fade" role="dialog">
+                                            echo '<div id="myModal' . $id. '" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -184,32 +186,32 @@ if (!isset($_SESSION["username"])) {
                         </div>
         
                         <div class="modal-body">
-                            <div class="form-group mb-3" style="display: flex;  align-items: center; vertical-align: middle;">
+                            <div class="form-group mb-3">
                                 <label for=""><b>Name</b></label>
                                 <input type="text" class="form-control" name="name" id="name" value="' . $name . '" readonly />
                             </div>
         
-                            <div class="form-group mb-3" style="display: flex;  align-items: center; vertical-align: middle;">
+                            <div class="form-group mb-3">
                                 <label for=""><b>Description</b></label>
                                 <input type="text" class="form-control" name="description" id="description" value="' . $description . '" readonly />
                             </div>
         
-                            <div class="form-group mb-3" style="display: flex;  align-items: center; vertical-align: middle;">
+                            <div class="form-group mb-3">
                                 <label for=""><b>Link</b></label>
                                 <input type="text" class="form-control" name="link" id="link" value="' . $link . '" readonly />
                             </div>
         
-                            <div class="form-group mb-3" style="display: flex;  align-items: center; vertical-align: middle;">
+                            <div class="form-group mb-3">
                                 <label for=""><b>Username</b></label>
                                 <input type="text" class="form-control" name="username" id="username" value="' . $username . '" readonly />
                             </div>
         
-                            <div class="form-group mb-3" style="display: flex;  align-items: center; vertical-align: middle;">
+                            <div class="form-group mb-3">
                                 <label for=""><b>Password</b></label>
                                 <input type="text" class="form-control" name="password" id="password" value="' . $password . '" readonly />
                             </div>
 
-                            <div class="form-group mb-3" style="display: flex;  align-items: center; vertical-align: middle;">
+                            <div class="form-group mb-3">
                                 <label for=""><b>Image</b></label>
                                 <div>
                                    <img src="' . $image . '" class="img-fluid " style="width: 100px; height: 100px;" alt="Image">
@@ -247,7 +249,7 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
+                                        <th scope="col">Sr. No.</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">URL</th>
                                         <th scope="col">Username</th>
@@ -266,7 +268,7 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration_1`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -277,9 +279,11 @@ if (!isset($_SESSION["username"])) {
                                             $password = $row['password'];
                                             $image = $row['image'];
 
+                                            $index++;
+
                                             echo '<tr>
 
-                   <td><b>' . $id . '</b></td>
+                   <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
                     <td>' . $url . '</td>
                     <td>' . $username . '</td>
@@ -288,10 +292,10 @@ if (!isset($_SESSION["username"])) {
                     <td>
 
                         <button data-bs-toggle="tooltip" title="Edit" data-bs-placement="top" style="border: none; text-decoration: none; background: unset !important;">
-                            <a class="button-a p-2 g-col-6" href="q_web_edit.php?q_web_editid=' . $id . '"><i class="bi bi-pencil-fill"></i></a>
+                            <a class="button-a p-2 g-col-6" href="q_web_edit.php?q_web_editid=' . $id. '"><i class="bi bi-pencil-fill"></i></a>
                         </button>
 
-                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button" class="confirm_del2_btn" data-id="' . $id . '" style="border: none; background: unset !important;">
+                        <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button" class="confirm_del2_btn" data-id="' .  $id . '" style="border: none; background: unset !important;">
                             <a class="button-a p-2 g-col-6" href="#"><i class="bi bi-trash-fill"></i></a>
                         </button>
 
@@ -368,9 +372,10 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Server Name</th>
-                                        <th scope="col">Admin Panel</th>
+                                        <th scope="col">Sr. No.</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Link</th>
                                         <th scope="col">Username</th>
                                         <th scope="col">Password</th>
                                         <th scope="col">Image</th>
@@ -387,21 +392,26 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration_2`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
-                                            $id = $row['id'];
+                                            $id =$row['id'];
                                             $name = $row['name'];
+                                            $description = $row['description'];
                                             $panel = $row['panel'];
                                             $username = $row['username'];
                                             $password = $row['password'];
                                             $image = $row['image'];
 
+
+                                            $index++;
+
                                             echo '<tr>
 
-                    <td><b>' . $id . '</b></td>
+                    <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
+                     <td>' . $description . '</td>
                     <td>' . $panel . '</td>
                     <td>' . $username . '</td>
                     <td>' . $password . '</td>
@@ -409,14 +419,14 @@ if (!isset($_SESSION["username"])) {
                     <td>
 
                         <button data-bs-toggle="tooltip" title="Edit" data-bs-placement="top" style="border: none; text-decoration: none; background: unset !important;">
-                            <a class="button-a p-2 g-col-6" href="q_admin_edit.php?q_admin_editid=' . $id . '"><i class="bi bi-pencil-fill"></i></a>
+                            <a class="button-a p-2 g-col-6" href="q_admin_edit.php?q_admin_editid=' . $id. '"><i class="bi bi-pencil-fill"></i></a>
                         </button>
 
                         <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button" class="confirm_del1_btn" data-id="' . $id . '" style="border: none; background: unset !important;">
                             <a class="button-a p-2 g-col-6" href="#"><i class="bi bi-trash-fill"></i></a>
                         </button>
 
-                        <button data-bs-toggle="tooltip" title="View" data-bs-placement="top" type="button" style="border: none; background: unset !important;" class="view_record_btn1" data-id="' . $id . '" data-bs-toggle="modal" data-bs-target="#myModal' . $id . '">
+                        <button data-bs-toggle="tooltip" title="View" data-bs-placement="top" type="button" style="border: none; background: unset !important;" class="view_record_btn1" data-id="' .  $id . '" data-bs-toggle="modal" data-bs-target="#myModal' . $id . '">
                         <a class="button-a p-2 g-col-6" href="#"><i class="bi bi-eye-fill"></i></a>
                           </button>
 
@@ -436,9 +446,14 @@ if (!isset($_SESSION["username"])) {
                                 <label for=""><b>Name</b></label>
                                 <input type="text" class="form-control" name="name" id="name" value="' . $name . '" readonly />
                             </div>
+
+                            <div class="form-group mb-3">
+                                <label for=""><b>Description</b></label>
+                                <input type="text" class="form-control" name="description" id="description" value="' . $description . '" readonly />
+                            </div>
         
                             <div class="form-group mb-3">
-                                <label for=""><b>Admin Panel</b></label>
+                                <label for=""><b>Link</b></label>
                                 <input type="text" class="form-control" name="panel" id="panel" value="' . $panel . '" readonly />
                             </div>
         
@@ -489,8 +504,8 @@ if (!isset($_SESSION["username"])) {
                             <table class="table table-striped ">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Server Name</th>
+                                        <th scope="col">Sr. No.</th>
+                                        <th scope="col">Name</th>
                                         <th scope="col">IP Address</th>
                                         <th scope="col">Purpose</th>
                                         <th scope="col">Image</th>
@@ -499,7 +514,7 @@ if (!isset($_SESSION["username"])) {
                                     </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody> 
 
                                     <?php
 
@@ -507,7 +522,7 @@ if (!isset($_SESSION["username"])) {
 
                                     $sql = "SELECT * FROM `registration_3`";
                                     $result = mysqli_query($con, $sql);
-
+                                    $index = 0;
                                     if ($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
 
@@ -517,9 +532,11 @@ if (!isset($_SESSION["username"])) {
                                             $purpose = $row['purpose'];
                                             $image = $row['image'];
 
+                                            $index++;
+
                                             echo '<tr>
 
-                   <td><b>' . $id . '</b></td>
+                   <td><b>' . $index . '</b></td>
                     <td>' . $name . '</td>
                     <td>' . $address . '</td>
                     <td>' . $purpose . '</td>
@@ -527,14 +544,14 @@ if (!isset($_SESSION["username"])) {
                     <td>
 
                         <button data-bs-toggle="tooltip" title="Edit" data-bs-placement="top" style="border: none; text-decoration: none; background: unset !important;">
-                            <a class="button-a p-2 g-col-6" href="q_server_edit.php?q_server_editid=' . $id . '"><i class="bi bi-pencil-fill"></i></a>
+                            <a class="button-a p-2 g-col-6" href="q_server_edit.php?q_server_editid=' . $id. '"><i class="bi bi-pencil-fill"></i></a>
                         </button>
 
                         <button data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" type="button" class="confirm_del3_btn" data-id="' . $id . '" style="border: none; background: unset !important;">
                             <a class="button-a p-2 g-col-6" href="#"><i class="bi bi-trash-fill"></i></a>
                         </button>
 
-                        <button data-bs-toggle="tooltip" title="View" data-bs-placement="top" type="button" style="border: none; background: unset !important;" class="view_record_btn3" data-id="' . $id . '" data-bs-toggle="modal" data-bs-target="#myModal' . $id . '">
+                        <button data-bs-toggle="tooltip" title="View" data-bs-placement="top" type="button" style="border: none; background: unset !important;" class="view_record_btn3" data-id="' .  $id. '" data-bs-toggle="modal" data-bs-target="#myModal' . $id . '">
                         <a class="button-a p-2 g-col-6" href="#"><i class="bi bi-eye-fill"></i></a>
                           </button>
 
@@ -556,7 +573,7 @@ if (!isset($_SESSION["username"])) {
                             </div>
         
                             <div class="form-group mb-3">
-                                <label for=""><b>Address</b></label>
+                                <label for=""><b>IP Address</b></label>
                                 <input type="text" class="form-control" name="address" id="address" value="' . $address . '" readonly />
                             </div>
         
@@ -897,6 +914,7 @@ if (!isset($_SESSION["username"])) {
                     if (data.status === 'success') {
 
                         $('#myModal' + id + ' #name').val(data.record.name);
+                        $('#myModal' + id + ' #description').val(data.record.description);
                         $('#myModal' + id + ' #panel').val(data.record.panel);
                         $('#myModal' + id + ' #username').val(data.record.username);
                         $('#myModal' + id + ' #password').val(data.record.password);

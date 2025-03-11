@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   
     $id = $_POST['id'];
     $name = $_POST['name'];
+    $description = $_POST['description'];
     $panel = $_POST['panel'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "File is not an image.";
             exit;
         }
-  
+   
          
         if ($_FILES['image']['size'] > 5000000) { 
             echo "Sorry, your file is too large.";
@@ -56,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $updateSql = "UPDATE `registration_2` SET 
                     name = '$name', 
+                    description = '$description', 
                     panel = '$panel', 
                     username = '$username', 
                     password = '$password', 
